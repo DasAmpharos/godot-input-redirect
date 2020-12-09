@@ -5,10 +5,13 @@ var ls := Vector2.ZERO
 var rs := Vector2.ZERO
 
 func press(button: int):
-	self.buttons = self.buttons | (1 << button)
+	buttons = buttons | (1 << button)
 
 func release(button: int):
-	self.buttons = self.buttons & ~(1 << button)
+	buttons = buttons & ~(1 << button)
+
+func clear_buttons():
+	buttons = 0
 
 func update_button(button: int, pressed: bool):
 	if pressed:
@@ -17,7 +20,7 @@ func update_button(button: int, pressed: bool):
 		release(button)
 
 func is_pressed(button: int) -> bool:
-	return (self.buttons >> button) & 1 == 1
+	return (buttons >> button) & 1 == 1
 
 func update_axis(axis: int, pos: Vector2):
 	match axis:
@@ -39,6 +42,13 @@ func update_axis_y(axis: int, y: float):
 			ls.y = y
 		Axis.RS:
 			rs.y = y
+
+func clear_axis(axis: int):
+	match axis:
+		Axis.LS:
+			ls = Vector2(0.0, 0.0)
+		Axis.RS:
+			rs = Vector2(0.0, 0.0)
 
 func get_axis(axis: int) -> Vector2:
 	match axis:

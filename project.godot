@@ -23,6 +23,7 @@ config/icon="res://icon.png"
 
 N3DS="*res://scripts/n3ds.gd"
 Channel="*res://scripts/channel.gd"
+InputManager="*res://scripts/input_manager.gd"
 
 [rendering]
 
