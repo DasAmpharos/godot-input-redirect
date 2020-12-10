@@ -67,7 +67,7 @@ func _create_packet(buttons: int, ls: Vector2, rs: Vector2) -> PoolByteArray:
 	arr.append_array(_to_little_endian(touch_screen))
 	arr.append_array(_to_little_endian(circle_pad))
 	arr.append_array(_to_little_endian(cpp))
-	arr.append_array(_pad(arr, 0, 4))
+	arr.append_array(_pad(0, 4))
 	return arr
 
 func _to_little_endian(i: int) -> PoolByteArray:
@@ -78,9 +78,9 @@ func _to_little_endian(i: int) -> PoolByteArray:
 	arr.append((i >> 24) & 0xff)
 	return arr
 
-func _pad(arr: PoolByteArray, byte: int, n: int) -> PoolByteArray:
+func _pad(byte: int, n: int) -> PoolByteArray:
 	var pad := PoolByteArray()
-	for i in range(n):
+	for _i in range(n):
 		pad.append(byte)
 	return pad
 

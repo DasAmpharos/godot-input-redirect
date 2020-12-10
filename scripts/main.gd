@@ -13,10 +13,9 @@ func _ready():
 	Channel.connect_to_host("10.0.0.37", 4950)
 	Channel.send_update()
 
-func _process(delta: float):
-	pass
+#func _process(delta: float):
 #	acc += delta
-#	if acc >= 0.05:
+#	if acc >= 0.1:
 #		N3DS.clear_buttons()
 #		N3DS.clear_axis(N3DS.Axis.LS)
 #		N3DS.clear_axis(N3DS.Axis.RS)

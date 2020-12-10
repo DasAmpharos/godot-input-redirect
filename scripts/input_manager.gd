@@ -10,12 +10,12 @@ func _ready():
 	set_process_input(true)
 
 func _input(event):
-	if event is InputEventKey:
-		if event.scancode == KEY_UP:
-			N3DS.update_button(N3DS.Button.UP, event.pressed)
-		elif event.scancode == KEY_DOWN:
-			N3DS.update_button(N3DS.Button.DOWN, event.pressed)
-		elif event.scancode == KEY_LEFT:
-			N3DS.update_button(N3DS.Button.LEFT, event.pressed)
-		elif event.scancode == KEY_RIGHT:
-			N3DS.update_button(N3DS.Button.RIGHT, event.pressed)
+	N3DS.update_button(N3DS.Button.A, event.is_action_pressed("n3ds_a"))
+	N3DS.update_button(N3DS.Button.B, event.is_action_pressed("n3ds_b"))
+	N3DS.update_button(N3DS.Button.X, event.is_action_pressed("n3ds_x"))
+	N3DS.update_button(N3DS.Button.Y, event.is_action_pressed("n3ds_y"))
+	
+	N3DS.update_button(N3DS.Button.UP, event.is_action_pressed("n3ds_up"))
+	N3DS.update_button(N3DS.Button.DOWN, event.is_action_pressed("n3ds_down"))
+	N3DS.update_button(N3DS.Button.LEFT, event.is_action_pressed("n3ds_left"))
+	N3DS.update_button(N3DS.Button.RIGHT, event.is_action_pressed("n3ds_right"))

@@ -32,16 +32,16 @@ func update_axis(axis: int, pos: Vector2):
 func update_axis_x(axis: int, x: float):
 	match axis:
 		Axis.LS:
-			ls.x = x
+			ls = Vector2(x, ls.y)
 		Axis.RS:
-			rs.x = x
+			rs = Vector2(x, rs.y)
 
 func update_axis_y(axis: int, y: float):
 	match axis:
 		Axis.LS:
-			ls.y = y
+			ls = Vector2(ls.x, y)
 		Axis.RS:
-			rs.y = y
+			rs = Vector2(rs.x, y)
 
 func clear_axis(axis: int):
 	match axis:
