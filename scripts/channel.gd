@@ -3,21 +3,18 @@ extends Node
 var _acc := 0.0
 var _socket = PacketPeerUDP.new()
 
-var send_interval := 0.05 setget set_send_interval, get_send_interval
-const SEND_INTERVAL := "application/send_interval"
-
 const CPAD_BOUND := 0x5d0
 
-func _ready():
-	if !ProjectSettings.has_setting(SEND_INTERVAL):
-		send_interval = 0.05
+export var hostname: String
+export var port: int = 4950
+export var active: bool = true
 
-func _process(delta: float):
-	if _socket.is_connected_to_host():
-		_acc += delta
-		if _acc >= send_interval:
-			send_update()
-			_acc = 0
+func _ready():
+	_socket.connect_to_host(hostname, port)
+
+func _process(delta):
+	if active:
+		send_update()
 
 func send_update():
 	if _socket.is_connected_to_host():
@@ -26,16 +23,6 @@ func send_update():
 		var rs := Vector2(N3DS.rs.x, N3DS.rs.y)
 		var packet := _create_packet(buttons, ls, rs)
 		_socket.put_packet(packet)
-
-func connect_to_host(host: String, port: int):
-	return _socket.connect_to_host(host, port)
-
-func get_send_interval() -> float:
-	return send_interval
-
-func set_send_interval(new_value: float):
-	ProjectSettings.set_setting(SEND_INTERVAL, new_value)
-	send_interval = new_value
 
 func _create_packet(buttons: int, ls: Vector2, rs: Vector2) -> PoolByteArray:
 	var hid_pad := 0xfff
