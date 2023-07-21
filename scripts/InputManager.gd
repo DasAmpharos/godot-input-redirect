@@ -8,7 +8,6 @@ var _mappings := {}
 
 func _ready():
 	set_process_input(true)
-#	pass
 
 func _process(_delta: float):
 	N3DS.clear_axis(N3DS.Axis.LS)

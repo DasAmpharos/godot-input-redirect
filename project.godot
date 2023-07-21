@@ -19,6 +19,8 @@ config/icon="res://icon.svg"
 
 N3DS="*res://scripts/N3DS.gd"
 InputManager="*res://scripts/InputManager.gd"
+PacketFactory="*res://scripts/PacketFactory.gd"
+ChannelManager="*res://scripts/ChannelManager.gd"
 
 [input]
 

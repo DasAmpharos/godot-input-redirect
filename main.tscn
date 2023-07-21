@@ -1,9 +1,15 @@
-[gd_scene load_steps=2 format=3 uid="uid://d4c8y42gpno6c"]
+[gd_scene load_steps=3 format=3 uid="uid://d4c8y42gpno6c"]
 
+[ext_resource type="Script" path="res://Main.gd" id="1_b16c6"]
 [ext_resource type="Script" path="res://scripts/Channel.gd" id="1_o035o"]
 
 [node name="Main" type="Node"]
+script = ExtResource("1_b16c6")
 
-[node name="New2DS-XL" type="Node" parent="."]
+[node name="N3DS_XL" type="Node" parent="."]
+script = ExtResource("1_o035o")
+hostname = "10.117.1.153"
+
+[node name="N2DS_XL" type="Node" parent="."]
 script = ExtResource("1_o035o")
 hostname = "10.117.1.154"
